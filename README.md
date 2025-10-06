@@ -5,24 +5,42 @@ dwm is an extremely fast, small, and dynamic window manager for X.
 
 Requirements
 ------------
-In order to build dwm you need the Xlib header files.
+In order to build dwm, st, dmenu (st and dmenu is neccesary for dwm to give you basic functionalities like terminal and programs) you need the Xlib header files.
 Also binaries installed like
 - brightnessctl
 - alsamixer and its related binaries
-- st
-- dmenu
 
 Installation
 ------------
 Edit config.mk to match your local setup (dwm is installed into
 the /usr/local namespace by default).
 
-Afterwards enter the following command to build and install dwm (if
+Afterwards enter the following command to build and install dwm, st and dmenu (if
 necessary as root):
 
-    make clean install
+```
+git clone https://github.com/Sanatani-Dhruv/dwm
+cd dwm/
+sudo make clean install
+cd st/
+sudo make clean install
+cd ../
+cd dmenu/
+sudo make clean install
+```
 
+### or
 
+```
+git clone https://github.com/Sanatani-Dhruv/dwm
+cd dwm/
+make clean install
+cd st/
+make clean install
+cd ../
+cd dmenu/
+make clean install
+```
 Running dwm
 -----------
 Add the following line to your .xinitrc to start dwm using startx:
@@ -39,11 +57,12 @@ the DISPLAY environment variable is set correctly, e.g.:
 In order to display status info in the bar, you can do something
 like this in your .xinitrc:
 
-    while xsetroot -name "`date` `uptime | sed 's/.*,//'`"
-    do
-    	sleep 1
-    done &
-    exec dwm
+```
+while true
+do
+    xsetroot -name " $(date) | <Name of Distro> + DWM " && sleep 0.2
+done &
+```
 
 
 
