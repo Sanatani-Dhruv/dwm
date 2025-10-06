@@ -6,7 +6,11 @@ dwm is an extremely fast, small, and dynamic window manager for X.
 Requirements
 ------------
 In order to build dwm you need the Xlib header files.
-
+Also binaries installed like
+- brightnessctl
+- alsamixer and its related binaries
+- st
+- dmenu
 
 Installation
 ------------
@@ -40,6 +44,7 @@ like this in your .xinitrc:
     	sleep 1
     done &
     exec dwm
+
 
 
 Configuration
