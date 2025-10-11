@@ -14,14 +14,15 @@ static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
+static const char col_white[]       = "#ffffff";
 static const char col_orange1[]     = "#9C4100"; // Variable Defined by Me
 static const char col_cyan[]        = "#005577";
-static const char col_violet1[]     = "#8400AD"; // Variable Defined by Me
+static const char col_violet1[]     = "#7000AD"; // Variable Defined by Me
 static const char col_violet2[]     = "#9900AD"; // Variable Defined by Me
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_orange1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_violet2,  col_violet1  },
+	[SchemeSel]  = { col_white, col_cyan,  col_violet1  },
 };
 
 /* tagging */
@@ -68,15 +69,9 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 static const char *incvol[] = {"/usr/bin/amixer", "set", "Master", "5+", NULL};
 static const char *decvol[] = {"/usr/bin/amixer", "set", "Master", "5-", NULL};
-static const char *brupcmd[] = { "brightnessctl", "set", "10%+", NULL };
-static const char *brdowncmd[] = { "brightnessctl", "set", "10%-", NULL };
-// static const char *scrotcmd[]  = { "scrot", "-t", "25", NULL };
-// static const char *scrotfocusedcmd[]  = { "scrot", "--focused", NULL };
+static const char *brupcmd[] = { "brightnessctl", "set", "5%+", NULL };
+static const char *brdowncmd[] = { "brightnessctl", "set", "5%-", NULL };
 
-
-
-// static const char *sscrot1[] = { "scrot", "\"/home/dhruv125/Pictures/Screenshots/SShot %Y-%m-%d $(date +'%I-%M-%S %p').png\"", "", NULL };
-// static const char *sscrot2[] = { "scrot", "--select \"/home/dhruv125/Pictures/Screenshots/SShot %Y-%m-%d $(date +'%I-%M-%S %p').png\"", "", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -117,9 +112,9 @@ static const Key keys[] = {
 	{ 0,				XF86XK_AudioRaiseVolume,spawn,{.v = incvol} },
 	{ 0, XF86XK_MonBrightnessUp,  spawn,          {.v = brupcmd} },
     { 0, XF86XK_MonBrightnessDown, spawn,          {.v = brdowncmd} },
-	{ 0,            XK_Print,   spawn,      SHCMD("scrot \"/home/dhruv125/Pictures/Screenshots/SShot %Y-%m-%d $(date +'%I-%M-%S %p').png\"") },
-	{ ControlMask,    XK_Print,   spawn,      SHCMD("scrot --focused \"/home/dhruv125/Pictures/Screenshots/SShot %Y-%m-%d $(date +'%I-%M-%S %p').png\"") },
-	{ ShiftMask,  XK_Print,   spawn,      SHCMD("scrot --select \"/home/dhruv125/Pictures/Screenshots/SShot %Y-%m-%d $(date +'%I-%M-%S %p').png\"") },
+	{ 0,            XK_Print,   spawn,      SHCMD("scrot \"/home/dhruv125/Pictures/Screenshots/SShot %Y-%m-%d $(date +'%I-%M-%S %p').png\" && notify-send ' Saved Screenshots in ~/Pictures/Screenshots '") },
+	{ ControlMask,    XK_Print,   spawn,      SHCMD("scrot --focused \"/home/dhruv125/Pictures/Screenshots/SShot %Y-%m-%d $(date +'%I-%M-%S %p').png\" && notify-send ' Saved Screenshots in ~/Pictures/Screenshots '") },
+	{ ShiftMask,  XK_Print,   spawn,      SHCMD("scrot --select \"/home/dhruv125/Pictures/Screenshots/SShot %Y-%m-%d $(date +'%I-%M-%S %p').png\" && notify-send ' Saved Screenshots in ~/Pictures/Screenshots '") },
 };
 
 /* button definitions */
