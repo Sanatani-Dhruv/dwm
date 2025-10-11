@@ -1,7 +1,7 @@
 #!/bin/bash
 pkill dwmblock
 pkill diodon
-pkill picom
+pkill picom --transparent-clipping # Using This Option here because not working when it is in .config/picom/picom.conf
 # Default NightLight
 redshift -oP -O 4500
 
@@ -19,7 +19,7 @@ feh "$HOME/Pictures/Redmi A3x.png" --bg-center
 dwmblocks &
 
 # Amazing Compositor for X11
-picom &
+picom --transparent-clipping  &
 
 # Starting Clipboard Manager ( This Should run in background)
 diodon &
