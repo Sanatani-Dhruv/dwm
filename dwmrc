@@ -1,0 +1,25 @@
+#!/bin/bash
+pkill dwmblock
+pkill diodon
+pkill picom
+# Default NightLight
+redshift -oP -O 4500
+
+
+# Setting Amazing Background Wallpaper
+feh "$HOME/Pictures/Redmi A3x.png" --bg-center
+
+# Setting Status-Bar's Text to Current Date-time and Setup Brief
+# while true
+# do
+# 	xsetroot -name " $(date) | Linux Mint + DWM " && sleep 1
+# done &
+
+# This Should run in background
+dwmblocks &
+
+# Amazing Compositor for X11
+picom &
+
+# Starting Clipboard Manager ( This Should run in background)
+diodon &
