@@ -30,6 +30,7 @@ sudo make clean install
 cd ../
 cd dwmblocks/
 sudo make clean install
+cd ../
 ```
 
 ### or
@@ -43,6 +44,10 @@ make clean install
 cd ../
 cd dmenu/
 make clean install
+cd ../
+cd dwmblocks/
+make clean install
+cd ../
 ```
 Running dwm
 -----------
