@@ -5,6 +5,11 @@
 
 /* appearance */
 static const unsigned int borderpx  = 2.5;        /* border pixel of windows */
+static const unsigned int barpadv	= 6;		/* bar vertical padding (from top)*/
+static const unsigned int barpadh	= 10;		/* bar vertical padding (from top)*/
+static const unsigned int barheight	= 2;		/* bar vertical padding (from top)*/
+static const unsigned int barborder	= 4;		/* bar vertical padding (from top)*/
+static const unsigned int floatbar	= 1;		/* 0 means bar won't float; float or dock the bar */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -13,16 +18,19 @@ static const char dmenufont[]       = "DejaVuSansMono:size=14";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
+static const char col_gray4[]       = "#f7f7f7";
 static const char col_white[]       = "#ffffff";
+static const char col_darkgrey[]    = "#222222";
 static const char col_orange1[]     = "#9C4100"; // Variable Defined by Me
 static const char col_cyan[]        = "#005577";
 static const char col_violet1[]     = "#7000AD"; // Variable Defined by Me
 static const char col_violet2[]     = "#9900AD"; // Variable Defined by Me
+												 //
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_orange1, col_gray2 },
+	[SchemeNorm] = { col_gray3, col_orange1, col_gray2  },
 	[SchemeSel]  = { col_white, col_cyan,  col_violet1  },
+	[SchemeBar]  = { NULL, 		NULL,	   col_darkgrey    },
 };
 
 /* tagging */
@@ -90,7 +98,6 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY|ShiftMask,             XK_f,      fullscreen,     {0} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
