@@ -14,15 +14,18 @@ static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
+static const char col_gray5[]       = "#040404";
+static const char col_black[]       = "#000000";
 static const char col_white[]       = "#ffffff";
 static const char col_orange1[]     = "#9C4100"; // Variable Defined by Me
 static const char col_cyan[]        = "#005577";
+static const char col_aqua[]        = "#00ffff";
 static const char col_violet1[]     = "#7000AD"; // Variable Defined by Me
 static const char col_violet2[]     = "#9900AD"; // Variable Defined by Me
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_orange1, col_gray2 },
-	[SchemeSel]  = { col_white, col_cyan,  col_violet1  },
+	[SchemeNorm] = { col_gray3, col_gray5, col_gray2 },
+	[SchemeSel]  = { col_white, col_orange1,  col_violet1  },
 };
 
 /* tagging */
@@ -65,7 +68,9 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+// static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, NULL };
+static const char *roficmd[] = { "rofi", "-normalize-match", "-no-lazy-grab", "-show-icons", "-show", "drun", NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *incvol[] = {"/usr/bin/amixer", "set", "Master", "5+", NULL};
 static const char *decvol[] = {"/usr/bin/amixer", "set", "Master", "5-", NULL};
@@ -76,6 +81,7 @@ static const char *brdowncmd[] = { "brightnessctl", "set", "5%-", NULL };
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_r,      spawn,          {.v = roficmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
