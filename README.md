@@ -29,7 +29,7 @@ cd dmenu/
 sudo make clean install
 cd ../
 cd dwmblocks/
-sudo make clean install
+sudo make install
 cd ../
 ```
 
