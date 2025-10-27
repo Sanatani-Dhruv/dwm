@@ -74,6 +74,10 @@ static const char *roficmd[] = { "rofi", "-normalize-match", "-no-lazy-grab", "-
 static const char *termcmd[]  = { "st", NULL };
 static const char *incvol[] = {"/usr/bin/amixer", "set", "Master", "5+", NULL};
 static const char *decvol[] = {"/usr/bin/amixer", "set", "Master", "5-", NULL};
+
+// for muting/unmuting
+static const char *mute[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
+
 static const char *brupcmd[] = { "brightnessctl", "set", "5%+", NULL };
 static const char *brdowncmd[] = { "brightnessctl", "set", "5%-", NULL };
 
@@ -115,8 +119,9 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ 0,				XF86XK_AudioLowerVolume,spawn,{.v = decvol} },	
-	{ 0,				XF86XK_AudioRaiseVolume,spawn,{.v = incvol} },
+	{ 0,				XF86XK_AudioLowerVolume,spawn,         {.v = decvol} },	
+	{ 0,				XF86XK_AudioRaiseVolume,spawn,         {.v = incvol} },
+	{ 0,                XF86XK_AudioMute       ,spawn,         {.v = mute } },
 	{ 0, XF86XK_MonBrightnessUp,  spawn,          {.v = brupcmd} },
     { 0, XF86XK_MonBrightnessDown, spawn,          {.v = brdowncmd} },
 	{ 0,            XK_Print,   spawn,      SHCMD("scrot \"/home/dhruv125/Pictures/Screenshots/SShot %Y-%m-%d $(date +'%I-%M-%S %p').png\" && notify-send ' Saved Screenshots in ~/Pictures/Screenshots '") },
