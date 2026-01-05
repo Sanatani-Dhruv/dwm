@@ -2,7 +2,7 @@
 <?php
 
 function help() {
-	echo "Usage: " . $_SERVER['argv'][0] . " [VALUE]\n";
+	echo "Usage: rds [VALUE]\n";
 	echo "Change Screen Temperature using redshift.\n";
 }
 
