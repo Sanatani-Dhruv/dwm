@@ -6,6 +6,30 @@ function help() {
 	echo "Change Screen Temperature using redshift.\n";
 }
 
+function makedir() {
+	shell_exec('mkdir -p ~/.config/rds/');
+	if (!file_exists('~/.config/rds/value')) {
+		shell_exec('touch ~/.config/rds/value');
+	}
+}
+
+function remember(int $value) {
+	makedir();
+	shell_exec("echo '$value' > ~/.config/rds/value");
+}
+
+function get_from_memory() {
+	makedir();
+	$value_from_memory = (int) shell_exec('cat ~/.config/rds/value');
+	return $value_from_memory;
+}
+
+$value = 123;
+
+echo get_from_memory();
+remember(get_from_memory() + $value);
+echo "\n" . get_from_memory();
+
 $args = $_SERVER['argv'];
 if (count($args) > 1) {
 	$value =  $args[1];
@@ -16,7 +40,7 @@ if (count($args) > 1) {
 			try {
 				$shell_command = shell_exec("redshift -oP -O $value");
 			} catch (Exception $err) {
-				echo "Error:\n";
+				echo "Error:\n$err";
 			}
 		} else {
 			echo "Temperature value must be between 1000K and 25000K.\n";
