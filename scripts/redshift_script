@@ -24,11 +24,12 @@ function get_from_memory() {
 	return $value_from_memory;
 }
 
-$value = 123;
+$value = 1000;
 
-echo get_from_memory();
-remember(get_from_memory() + $value);
-echo "\n" . get_from_memory();
+// remember($value);
+echo "Before: " . get_from_memory() . "\n" ;
+remember(get_from_memory() + 100);
+echo "After: " . get_from_memory() . "\n" ;
 
 $args = $_SERVER['argv'];
 if (count($args) > 1) {
