@@ -42,4 +42,9 @@ uninstall:
 	rm -f ${DESTDIR}${PREFIX}/bin/dwm\
 		${DESTDIR}${MANPREFIX}/man1/dwm.1
 
+install_scripts:
+	cp scripts/redshift_script ${DESTDIR}${PREFIX}/bin/rds
+	echo "Installed Redsift wrapper script as rds"
+
+
 .PHONY: all clean dist install uninstall

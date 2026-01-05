@@ -1,0 +1,33 @@
+#!/usr/bin/env php
+<?php
+
+function help() {
+	echo "Usage: " . $_SERVER['argv'][0] . " [VALUE]\n";
+	echo "Change Screen Temperature using redshift.\n";
+}
+
+$args = $_SERVER['argv'];
+if (count($args) > 1) {
+	$value =  $args[1];
+
+	// if (var_dump()) {
+	if (ctype_digit($value)) {
+		if ($value > 1000 && $value < 25000) {
+			try {
+				$shell_command = shell_exec("redshift -oP -O $value");
+			} catch (Exception $err) {
+				echo "Error:\n";
+			}
+		} else {
+			echo "Temperature value must be between 1000K and 25000K.\n";
+		}
+	} elseif ($value == "help") {
+		help();
+	} else {
+		echo "Please supply ONLY integer value for temperature.\n";
+	}
+} else {
+	help();
+}
+
+?>
