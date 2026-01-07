@@ -1,0 +1,5 @@
+Shutdown
+Cancel Shutdown
+Reboot
+Logout
+Suspend

@@ -7,20 +7,20 @@ function help() {
 }
 
 function makedir() {
-	shell_exec('mkdir -p ~/.config/rds/');
-	if (!file_exists('~/.config/rds/value')) {
-		shell_exec('touch ~/.config/rds/value');
+	shell_exec('mkdir -p ~/.config/dwm_scripts/');
+	if (!file_exists('~/.config/dwm_scripts/value')) {
+		shell_exec('touch ~/.config/dwm_scripts/value');
 	}
 }
 
 function remember(int $value) {
 	makedir();
-	shell_exec("echo '$value' > ~/.config/rds/value");
+	shell_exec("echo '$value' > ~/.config/dwm_scripts/value");
 }
 
 function get_from_memory() {
 	makedir();
-	$value_from_memory = (int) shell_exec('cat ~/.config/rds/value');
+	$value_from_memory = (int) shell_exec('cat ~/.config/dwm_scripts/value');
 	return $value_from_memory;
 }
 

@@ -42,9 +42,20 @@ uninstall:
 	rm -f ${DESTDIR}${PREFIX}/bin/dwm\
 		${DESTDIR}${MANPREFIX}/man1/dwm.1
 
-install_scripts:
-	cp scripts/redshift_script ${DESTDIR}${PREFIX}/bin/rds
+install_scripts: rds power
+	cp scripts/redshift/redshift_script ${DESTDIR}${PREFIX}/bin/rds
+	echo "Installed Redsift wrapper script as rds"
+	mkdir -p $HOME/.config/dwm_scripts/
+	cp scripts/power/power.sh scripts/power/power
+	chmod +x scripts/power/power
+
+rds:
+	cp scripts/redshift/redshift_script ${DESTDIR}${PREFIX}/bin/rds
 	echo "Installed Redsift wrapper script as rds"
 
+power:
+	mkdir -p $HOME/.config/dwm_scripts/
+	cp scripts/power/power.sh scripts/power/power
+	chmod +x scripts/power/power
 
 .PHONY: all clean dist install uninstall
