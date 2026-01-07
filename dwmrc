@@ -3,7 +3,7 @@ pkill dwmblock
 pkill diodon
 pkill "picom --transparent-clipping" # Using This Option here because not working when it is in .config/picom/picom.conf
 # Default NightLight
-redshift -oP -O 4500
+redshift -oP -O 4200
 
 
 # Setting Amazing Background Wallpaper
