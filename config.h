@@ -129,8 +129,6 @@ static const Key keys[] = {
 	{ ControlMask,    XK_Print,   spawn,      SHCMD("scrot --focused \"/home/dhruv125/Pictures/Screenshots/SShot %Y-%m-%d $(date +'%I-%M-%S %p').png\" -e 'xclip -selection clipboard -target image/png -i \"$f\"' && notify-send ' Saved Screenshots in ~/Pictures/Screenshots '") },
 	{ ShiftMask,  XK_Print,   spawn,      SHCMD("scrot --select \"/home/dhruv125/Pictures/Screenshots/SShot %Y-%m-%d $(date +'%I-%M-%S %p').png\" -e 'xclip -selection clipboard -target image/png -i \"$f\"' && notify-send ' Saved Screenshots in ~/Pictures/Screenshots '") },
 	{ MODKEY|ShiftMask,             XK_s, spawn,         SHCMD("/home/dhruv125/.suckless/dwm/scripts/power/power") },
-	{ MODKEY|ShiftMask,             XK_j,      aspectresize,   {.i = +24} },
-	{ MODKEY|ShiftMask,             XK_k,      aspectresize,   {.i = -24} },
 };
 
 /* button definitions */
