@@ -1,58 +1,55 @@
 #!/usr/bin/env php
 <?php
 
+$default = 4200;
+$dirPath = $_SERVER['HOME'] . "/.config/rds/";
+$filePath = $_SERVER['HOME'] . "/.config/rds/value";
+
+$valFromDb = (file_exists($filePath)) ? trim(file_get_contents($filePath)) : $default;
+
+shell_exec("
+mkdir -p $dirPath;
+touch $filePath;
+");
+
+if (!ctype_digit($valFromDb)) {
+	$valFromDb = $default;
+}
+
 function help() {
 	echo "Usage: rds [VALUE]\n";
 	echo "Change Screen Temperature using redshift.\n";
 }
 
-function makedir() {
-	shell_exec('mkdir -p ~/.config/dwm_scripts/');
-	if (!file_exists('~/.config/dwm_scripts/value')) {
-		shell_exec('touch ~/.config/dwm_scripts/value');
-	}
-}
-
-function remember(int $value) {
-	makedir();
-	shell_exec("echo '$value' > ~/.config/dwm_scripts/value");
-}
-
-function get_from_memory() {
-	makedir();
-	$value_from_memory = (int) shell_exec('cat ~/.config/dwm_scripts/value');
-	return $value_from_memory;
-}
-
-$value = 1000;
-
-// remember($value);
-echo "Before: " . get_from_memory() . "\n" ;
-remember(get_from_memory() + 100);
-echo "After: " . get_from_memory() . "\n" ;
-
 $args = $_SERVER['argv'];
 if (count($args) > 1) {
-	$value =  $args[1];
+	$firstArg =  $args[1];
 
 	// if (var_dump()) {
-	if (ctype_digit($value)) {
-		if ($value > 1000 && $value < 25000) {
+	if (ctype_digit($firstArg)) {
+		if ($firstArg > 1000 && $firstArg < 25000) {
 			try {
-				$shell_command = shell_exec("redshift -oP -O $value");
+				$shell_command = shell_exec("redshift -oP -O $firstArg");
 			} catch (Exception $err) {
-				echo "Error:\n$err";
+				echo "Error:\n";
 			}
 		} else {
 			echo "Temperature value must be between 1000K and 25000K.\n";
 		}
-	} elseif ($value == "help") {
+	} elseif ($firstArg == "help") {
 		help();
+	} elseif ($firstArg == "inc" || $firstArg == 'dec') {
+		if (isset($args[2])) {
+			$value = (int) $args[2];
+		} else {
+			$value = 200;
+		}
+		$finalVal = ($firstArg == "inc") ? ($valFromDb + $value) : ($valFromDb - $value);
+		$shell_command = shell_exec("redshift -oP -O $finalVal");
+		file_put_contents($filePath, $finalVal);
 	} else {
 		echo "Please supply ONLY integer value for temperature.\n";
 	}
 } else {
 	help();
 }
-
-?>
