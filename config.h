@@ -80,6 +80,8 @@ static const char *mute[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
 
 static const char *brupcmd[] = { "brightnessctl", "set", "5%+", NULL };
 static const char *brdowncmd[] = { "brightnessctl", "set", "5%-", NULL };
+static const char *inclightness[] = { "rds", "inc", "300", NULL };
+static const char *declightness[] = { "rds", "dec", "300", NULL };
 
 
 static const Key keys[] = {
@@ -125,6 +127,8 @@ static const Key keys[] = {
 	{ 0,                XF86XK_AudioMute       ,spawn,         {.v = mute } },
 	{ 0, XF86XK_MonBrightnessUp,  spawn,          {.v = brupcmd} },
     { 0, XF86XK_MonBrightnessDown, spawn,          {.v = brdowncmd} },
+	{ ControlMask, XF86XK_MonBrightnessUp,  spawn,          {.v = inclightness} },
+    { ControlMask, XF86XK_MonBrightnessDown, spawn,          {.v = declightness} },
 	{ 0,            XK_Print,   spawn,      SHCMD("scrot \"/home/dhruv125/Pictures/Screenshots/SShot %Y-%m-%d $(date +'%I-%M-%S %p').png\" -e 'xclip -selection clipboard -target image/png -i \"$f\"' && notify-send ' Saved Screenshots in ~/Pictures/Screenshots '") },
 	{ ControlMask,    XK_Print,   spawn,      SHCMD("scrot --focused \"/home/dhruv125/Pictures/Screenshots/SShot %Y-%m-%d $(date +'%I-%M-%S %p').png\" -e 'xclip -selection clipboard -target image/png -i \"$f\"' && notify-send ' Saved Screenshots in ~/Pictures/Screenshots '") },
 	{ ShiftMask,  XK_Print,   spawn,      SHCMD("scrot --select \"/home/dhruv125/Pictures/Screenshots/SShot %Y-%m-%d $(date +'%I-%M-%S %p').png\" -e 'xclip -selection clipboard -target image/png -i \"$f\"' && notify-send ' Saved Screenshots in ~/Pictures/Screenshots '") },

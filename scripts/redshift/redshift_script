@@ -30,6 +30,7 @@ if (count($args) > 1) {
 		if ($firstArg > 1000 && $firstArg < 25000) {
 			try {
 				$shell_command = shell_exec("redshift -oP -O $firstArg");
+				file_put_contents($filePath, $firstArg);
 			} catch (Exception $err) {
 				echo "Error:\n";
 			}
@@ -44,7 +45,11 @@ if (count($args) > 1) {
 		} else {
 			$value = 200;
 		}
+
 		$finalVal = ($firstArg == "inc") ? ($valFromDb + $value) : ($valFromDb - $value);
+		if ($finalVal < 1000 || $finalVal > 25000) {
+			$finalVal = $default;
+		}
 		$shell_command = shell_exec("redshift -oP -O $finalVal");
 		file_put_contents($filePath, $finalVal);
 	} else {
