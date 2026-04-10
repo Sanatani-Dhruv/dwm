@@ -5,11 +5,11 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Dejavu Sans Mono for Powerline:pixelsize=18";
+static char *font = "DejaVu Sans Mono:pixelsize=19";
 /* Spare fonts */
 static char *font2[] = {
-	"DejaVu Sans:pixelsize=17",
-	"Dejavu Sans Mono for Powerline:pixelsize=17",
+	"DejaVu Sans Mono:pixelsize=19",
+	"DejaVu Sans Mono:pixelsize=19",
 	"Noto Color Emoji:pixelsize=16"
 };
 
