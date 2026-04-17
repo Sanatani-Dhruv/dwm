@@ -1,13 +1,12 @@
-#!/bin/bash
+#!/usr/bin/env bash
 pkill dwmblock
 pkill diodon
-pkill "picom --transparent-clipping" # Using This Option here because not working when it is in .config/picom/picom.conf
+pkill "picom --transparent-clipping" -f # Using This Option here because not working when it is in .config/picom/picom.conf
 # Default NightLight
-redshift -oP -O 4200
-
+redshift -oP -O 4000
 
 # Setting Amazing Background Wallpaper
-feh "$HOME/Pictures/Redmi A3x.png" --bg-center
+feh "$HOME/.bg_image.png" --bg-center
 
 # Setting Status-Bar's Text to Current Date-time and Setup Brief
 # while true
@@ -19,7 +18,8 @@ feh "$HOME/Pictures/Redmi A3x.png" --bg-center
 dwmblocks &
 
 # Amazing Compositor for X11
-picom --transparent-clipping  &
+picom --transparent-clipping &
 
 # Starting Clipboard Manager ( This Should run in background)
 diodon &
+exec dwm
