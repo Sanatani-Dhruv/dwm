@@ -76,7 +76,7 @@ static const char *incvol[] = {"/usr/bin/amixer", "set", "Master", "5+", NULL};
 static const char *decvol[] = {"/usr/bin/amixer", "set", "Master", "5-", NULL};
 
 // for muting/unmuting
-static const char *mute[] = { "amixer", "-q", "set", "Master", "toggle;amixer", "set", "Speaker", "toggle", NULL };
+static const char *mute[] = { "togglespeaker", NULL };
 
 static const char *brupcmd[] = { "brightnessctl", "set", "5%+", NULL };
 static const char *brdowncmd[] = { "brightnessctl", "set", "5%-", NULL };

@@ -42,7 +42,11 @@ uninstall:
 	rm -f ${DESTDIR}${PREFIX}/bin/dwm\
 		${DESTDIR}${MANPREFIX}/man1/dwm.1
 
-install_scripts: rds power
+install_scripts: rds power mutebtn
+
+mutebtn:
+	cp scripts/togglespeaker ${DESTDIR}${PREFIX}/bin/togglespeaker
+	echo "Installed amixer wrapper script for mute not working properly as togglespeaker"
 
 rds:
 	cp scripts/redshift/redshift_script ${DESTDIR}${PREFIX}/bin/rds
