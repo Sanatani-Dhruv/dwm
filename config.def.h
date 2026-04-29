@@ -82,6 +82,7 @@ static const char *brupcmd[] = { "brightnessctl", "set", "5%+", NULL };
 static const char *brdowncmd[] = { "brightnessctl", "set", "5%-", NULL };
 static const char *inclightness[] = { "rds", "inc", "300", NULL };
 static const char *declightness[] = { "rds", "dec", "300", NULL };
+static const char *pickwebapp[] = { "webapp", NULL };
 
 
 static const Key keys[] = {
@@ -90,6 +91,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_r,      spawn,          {.v = roficmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
+	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = pickwebapp } },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },

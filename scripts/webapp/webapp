@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+help() {
+	echo Usage: $0
+}
+
+proto="https://"
+
+list=$(cat $HOME/.webapplist)
+
+selection=$(echo -n "$list" | rofi -dmenu -i -window-title "Select WebApp")
+
+if [[ -z $selection ]]; then
+	help
+else
+	case $selection in
+		whatsapp|Whatsapp|wa|ws)
+			url="web.whatsapp.com"
+			firefox -new-window "$proto$url";
+			exit
+			;;
+		youtube|yt|YT|Youtube)
+			url="youtube.com"
+			firefox -new-window "$proto$url";
+			exit
+			;;
+		tg|telegram|Telegram)
+			url="web.telegram.org"
+			firefox -new-window "$proto$url";
+			exit
+			;;
+		gh|github|Github|git)
+			url="github.com"
+			firefox -new-window "$proto$url";
+			exit
+			;;
+		packagist|pkg|Packagist)
+			url="packagist.org"
+			firefox -new-window "$proto$url";
+			exit
+			;;
+		Google\ Classroom|Classroom)
+			url="classroom.google.com"
+			firefox -new-window "$proto$url";
+			exit
+			;;
+		*)
+			echo "Unknown App"
+			exit
+			;;
+	esac
+fi
