@@ -72,11 +72,14 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-fn", dmenufont, NULL };
 static const char *roficmd[] = { "rofi", "-normalize-match", "-no-lazy-grab", "-show-icons", "-show", "drun", NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *incvol[] = {"/usr/bin/amixer", "set", "Master", "5+", NULL};
-static const char *decvol[] = {"/usr/bin/amixer", "set", "Master", "5-", NULL};
+// static const char *incvol[] = {"/usr/bin/amixer", "set", "Master", "5+", NULL};
+// static const char *decvol[] = {"/usr/bin/amixer", "set", "Master", "5-", NULL};
+static const char *incvol[] = {"pulseaudio-ctl", "up", NULL};
+static const char *decvol[] = {"pulseaudio-ctl", "down", NULL};
 
 // for muting/unmuting
-static const char *mute[] = { "togglespeaker", NULL };
+// static const char *mute[] = { "togglespeaker", NULL };
+static const char *mute[] = { "pulseaudio-ctl", "mute", NULL };
 
 static const char *brupcmd[] = { "brightnessctl", "set", "5%+", NULL };
 static const char *brdowncmd[] = { "brightnessctl", "set", "5%-", NULL };
