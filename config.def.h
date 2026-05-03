@@ -80,6 +80,7 @@ static const char *decvol[] = {"pulseaudio-ctl", "down", NULL};
 // for muting/unmuting
 // static const char *mute[] = { "togglespeaker", NULL };
 static const char *mute[] = { "pulseaudio-ctl", "mute", NULL };
+static const char *mutemic[] = { "pulseaudio-ctl", "mute-input", NULL };
 
 static const char *brupcmd[] = { "brightnessctl", "set", "5%+", NULL };
 static const char *brdowncmd[] = { "brightnessctl", "set", "5%-", NULL };
@@ -130,6 +131,7 @@ static const Key keys[] = {
 	{ 0,				XF86XK_AudioLowerVolume,spawn,         {.v = decvol} },	
 	{ 0,				XF86XK_AudioRaiseVolume,spawn,         {.v = incvol} },
 	{ 0,                XF86XK_AudioMute       ,spawn,         {.v = mute } },
+	{ 0,                XF86XK_AudioMicMute    ,spawn,         {.v = mutemic } },
 	{ 0, XF86XK_MonBrightnessUp,  spawn,          {.v = brupcmd} },
     { 0, XF86XK_MonBrightnessDown, spawn,          {.v = brdowncmd} },
 	{ ControlMask, XF86XK_MonBrightnessUp,  spawn,          {.v = inclightness} },
