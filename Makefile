@@ -42,7 +42,7 @@ uninstall:
 	rm -f ${DESTDIR}${PREFIX}/bin/dwm\
 		${DESTDIR}${MANPREFIX}/man1/dwm.1
 
-install_scripts: rds power
+install_scripts: rds power clipboard-ui
 
 rds:
 	cp scripts/redshift/redshift_script ${DESTDIR}${PREFIX}/bin/rds
@@ -54,5 +54,8 @@ power:
 	cp scripts/power/power ${HOME}/.local/bin/
 	chmod +x scripts/power/power
 	cp scripts/power/system.txt ${HOME}/.config/dwm_scripts/
+
+clipboard-ui:
+	cp scripts/clipboard/clipboard-ui ${DESTDIR}${PREFIX}/bin
 
 .PHONY: all clean dist install uninstall

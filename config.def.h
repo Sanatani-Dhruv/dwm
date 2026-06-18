@@ -87,7 +87,7 @@ static const char *brdowncmd[] = { "brightnessctl", "set", "5%-", NULL };
 static const char *inclightness[] = { "rds", "inc", "300", NULL };
 static const char *declightness[] = { "rds", "dec", "300", NULL };
 static const char *pickwebapp[] = { "webapp", NULL };
-static const char *openclipboardmanager[] = { "gpaste-client", "ui", NULL };
+static const char *openclipboardmanager[] = { "clipboard-ui", NULL };
 
 
 static const Key keys[] = {
